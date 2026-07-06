@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusion SMP | Premium Minecraft Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: #1a1a1a;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff69b4;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            color: #aaaaaa;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .ip-box {
+            background: #111111;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px dashed #555555;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ip-box:hover {
+            border-color: #ff69b4;
+            transform: scale(1.02);
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff69b4;
+            color: #ffffff;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #e0529c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fusion SMP</h1>
+        <p>Welcome to the official hub of Fusion SMP. Prepare for hardcore custom mechanics, hyper-agility fusions, and intense seasonal battles.</p>
+        
+        <div class="ip-box" onclick="copyIP()">
+            FUSIONSMP.XYZ
+        </div>
+
+        <a href="https://fusionsmp.xyz" target="_blank" class="btn">Visit Store</a>
+    </div>
+
+    <script>
+        function copyIP() {
+            navigator.clipboard.writeText("fusionsmp.xyz");
+            alert("Server IP copied to clipboard!");
+        }
+    </script>
+
+</body>
+</html>
