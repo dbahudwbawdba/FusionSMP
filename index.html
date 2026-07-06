@@ -1,754 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fusion SMP | Premium Competitive Minecraft Network</title>
-    
-    <!-- Premium Discord Rich Presence & SEO Meta Engine -->
-    <meta name="title" content="Fusion SMP | Official Network Hub">
-    <meta name="description" content="Dominate the ultimate competitive Minecraft experience on Fusion SMP. Hyper-agility fusions, advanced combat mechanics, custom items, and non-stop seasonal battles. Join us today at fusionsmp.xyz.">
-    <meta name="keywords" content="Minecraft, SMP, Fusion SMP, Custom Weapons, PvP Server, Competitive SMP, fusionsmp.xyz, Lifesteal, Box PvP">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#ff69b4">
-    
-    <!-- OpenGraph Asset Hooks for Discord / Twitter Embeds -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fusionsmp.xyz">
-    <meta property="og:title" content="Fusion SMP - Redefining Minecraft Agility Combat">
-    <meta property="og:description" content="Unlock game-breaking movement abilities like Wind Dash and Skylaunch. Experience zero lag, balanced PvP setups, and massive community competitions. Join fusionsmp.xyz now!">
-    <meta property="og:image" content="https://fusionsmp.xyzassets/banner.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fusion SMP</title>
 
-    <!-- Premium Google Fonts and Icon Library Injections -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:ital,wght@0,100..0,900;1,100..0,900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloudflare.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* Global CSS Root Variable Definitions mapping bright hot pink aesthetics */
-        :root {
-            --bg-primary: #0a0a0c;
-            --bg-secondary: #121216;
-            --bg-tertiary: #191922;
-            --accent-pink: #ff69b4;
-            --accent-pink-hover: #e0529c;
-            --accent-cyan: #00ffff;
-            --text-main: #ffffff;
-            --text-muted: #a4a4b5;
-            --glow-strength: 0 0 15px rgba(255, 105, 180, 0.4);
-            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+<style>
 
-        /* Standardize Base Layout Layer Rules */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-            border: none;
-            text-decoration: none;
-            list-style: none;
-            font-family: 'Montserrat', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #0e0e0e;
+    color: white;
+    overflow-x: hidden;
+}
 
-        body {
-            background-color: var(--bg-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+/* GLOBAL */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
 
-        /* Premium Custom Scrollbar Layout Tracks */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
+h1,h2,h3 {
+    margin-bottom: 15px;
+}
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    transition: 0.25s ease;
+}
 
-        ::-webkit-scrollbar-thumb {
-            background: #252530;
-            border-radius: 5px;
-            border: 2px solid var(--bg-primary);
-            transition: var(--transition-smooth);
-        }
+button:hover {
+    transform: translateY(-3px);
+}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-pink);
-            box-shadow: var(--glow-strength);
-        }
+button:active {
+    transform: scale(0.95);
+}
 
-        /* Helper Layout Utilities Wrapper blocks */
-        .section-padding {
-            padding: 8rem 10% 8rem 10%;
-        }
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#1a1a1a,#000);
+}
 
-        .container-max {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            width: 100%;
-        }
+.hero h1 {
+    font-size: 3rem;
+}
 
-        .neon-text-glow {
-            text-shadow: var(--glow-strength);
-        }
+.hero button {
+    margin-top: 20px;
+    background: #ff4da6;
+    color: white;
+}
 
-        .neon-border-glow {
-            border: 1px solid var(--accent-pink);
-            box-shadow: var(--glow-strength);
-        }
+/* FADE IN */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
 
-        /* Section Typography Headers Layout templates */
-        .heading-container {
-            text-align: center;
-            margin-bottom: 5rem;
-            position: relative;
-        }
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .heading-container h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-main);
-            position: relative;
-            display: inline-block;
-            z-index: 2;
-        }
+/* RANKS */
+.rank-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-        .heading-container h2 span {
-            color: var(--accent-pink);
-            text-shadow: var(--glow-strength);
-        }
+.rank {
+    padding: 25px;
+    width: 260px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
 
-        .heading-container .bg-backdrop-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Oswald', sans-serif;
-            font-size: 7rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.02);
-            letter-spacing: 8px;
-            white-space: nowrap;
-            user-select: none;
-            z-index: 1;
-        }
+.rank:hover {
+    transform: translateY(-8px);
+}
 
-        .heading-container p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.mvp {
+    border: 2px solid #ffd84d;
+    box-shadow: 0 0 20px rgba(255,216,77,0.3);
+}
 
-        /* Fixed Navigation Header Bar Blueprint Layout */
-        .navbar-main {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 90px;
-            background: rgba(10, 10, 12, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            transition: var(--transition-smooth);
-        }
+.mvp h3 {
+    color: #ffd84d;
+}
 
-        .navbar-main.scrolled {
-            height: 75px;
-            background: var(--bg-primary);
-            border-bottom: 1px solid rgba(255, 105, 180, 0.2);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        }
+.mvpplus {
+    border: 2px solid #ff8c42;
+    box-shadow: 0 0 20px rgba(255,140,66,0.3);
+}
 
-        .navbar-logo a {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+.mvpplus h3 {
+    color: #ff8c42;
+}
 
-        .navbar-logo a span {
-            color: var(--accent-pink);
-            text-shadow: var(--glow-strength);
-        }
+/* POPUP */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+}
 
-        .nav-links-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
+.popup.active {
+    opacity: 1;
+    pointer-events: all;
+}
 
-        .nav-item-link {
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: var(--transition-smooth);
-        }
+.popup-box {
+    background: #1c1c1c;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+    transform: scale(0.8);
+    transition: 0.3s;
+}
 
-        .nav-item-link:hover {
-            color: var(--accent-pink);
-        }
+.popup.active .popup-box {
+    transform: scale(1);
+}
 
-        .nav-item-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-pink);
-            box-shadow: var(--glow-strength);
-            transition: var(--transition-smooth);
-        }
+/* TOAST */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff4da6;
+    padding: 12px 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s;
+}
 
-        .nav-item-link:hover::after {
-            width: 100%;
-        }
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .nav-action-btn {
-            background: linear-gradient(135deg, var(--accent-pink), #e04b93);
-            color: var(--text-main);
-            padding: 0.75rem 1.8rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            border-radius: 6px;
-            letter-spacing: 1px;
-            box-shadow: var(--glow-strength);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
+/* NAV */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+}
 
-        .nav-action-btn:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #e04b93, var(--accent-pink));
-            box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
-        }
+nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+}
 
-        .mobile-nav-toggle {
-            display: none;
-            color: var(--text-main);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
 </style>
 </head>
+
 <body>
 
-    <!-- 1. NAVIGATION BAR CONTAINER STRUCTURE -->
-    <nav class="navbar-main" id="navbar-anchor">
-        <div class="navbar-logo">
-            <a href="#">Fusion<span>SMP</span></a>
-        </div>
-        <ul class="nav-links-wrapper" id="nav-menu">
-            <li><a href="#" class="nav-item-link">Home</a></li>
-            <li><a href="#codex-anchor" class="nav-item-link">Fusion Codex</a></li>
-            <li><a href="#stats-anchor" class="nav-item-link">Live Metrics</a></li>
-            <li><a href="#shop-anchor" class="nav-item-link">Server Store</a></li>
-            <li><a href="#faq-anchor" class="nav-item-link">FAQ Guide</a></li>
-        </ul>
-        <div class="nav-actions-container">
-            <button class="nav-action-btn" onclick="scrollToElement('shop-anchor')">Store</button>
-        </div>
-        <div class="mobile-nav-toggle" id="mobile-hamburger" onclick="toggleMobileMenu()">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-    </nav>
+<nav>
+<a href="#">Home</a>
+<a href="#ranks">Ranks</a>
+<a href="#about">About</a>
+</nav>
 
-    <!-- 2. FULL SCREEN PARALLAX HERO CANVAS SECTION -->
-    <header class="hero-section" id="home-anchor" style="position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0 10%;">
-        <!-- Interactive Ambient Particle Backdrop Matrix Layer -->
-        <div id="hero-particles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(20,20,30,0.4) 0%, var(--bg-primary) 100%); z-index: 1; pointer-events: none;"></div>
-        
-        <div class="hero-content-wrapper" style="text-align: center; position: relative; z-index: 10; max-width: 900px; transform: translateY(20px);">
-            <div class="hero-badge" style="display: inline-block; background: rgba(255, 105, 180, 0.08); border: 1px solid rgba(255, 105, 180, 0.3); padding: 0.5rem 1.5rem; border-radius: 50px; color: var(--accent-pink); font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2rem; box-shadow: var(--glow-strength);">
-                <i class="fa-solid fa-bolt" style="margin-right: 8px;"></i> Next-Gen Agility Mechanics
-            </div>
-            
-            <h1 class="hero-main-title" style="font-family: 'Oswald', sans-serif; font-size: 5.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; line-height: 1.1; margin-bottom: 1.5rem; color: #ffffff;">
-                Redefining <span style="color: var(--accent-pink); text-shadow: var(--glow-strength); background: linear-gradient(to right, #ffffff, var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Minecraft PvP</span>
-            </h1>
-            
-            <p class="hero-description" style="color: var(--text-muted); font-size: 1.25rem; font-weight: 500; margin-bottom: 3.5rem; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.7;">
-                Dominate an unparalleled high-octane SMP network environment. Arm yourself with game-breaking movement abilities, custom combat builds, and zero lag.
-            </p>
-            
-            <!-- Click to Copy IP Core Widget Module -->
-            <div class="hero-action-panel" style="display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                <div class="ip-widget-container" onclick="copyNetworkIP(this)" style="background: var(--bg-secondary); border: 2px dashed rgba(255, 105, 180, 0.4); padding: 1rem 2.5rem; border-radius: 12px; cursor: pointer; position: relative; transition: var(--transition-smooth); display: flex; align-items: center; gap: 1.5rem;">
-                    <div class="ip-status-light" style="width: 10px; height: 10px; background: var(--accent-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--accent-cyan); animation: pulse Glow 2s infinite;"></div>
-                    <span class="ip-address-text" style="font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; color: var(--text-main);">FUSIONSMP.XYZ</span>
-                    <i class="fa-regular fa-copy" style="color: var(--accent-pink); font-size: 1.3rem; transition: var(--transition-smooth);"></i>
-                    <div class="ip-tooltip-text" style="position: absolute; bottom: -45px; left: 50%; transform: translateX(-50%); background: #ff69b4; color: #fff; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; white-space: nowrap; opacity: 0; pointer-events: none; transition: var(--transition-smooth); box-shadow: var(--glow-strength);">Click To Copy IP</div>
-                </div>
-                
-                <button class="hero-secondary-btn" onclick="scrollToElement('codex-anchor')" style="background: transparent; color: #ffffff; border: 2px solid rgba(255,255,255,0.1); padding: 1.1rem 2.5rem; font-size: 1rem; font-weight: 700; text-transform: uppercase; border-radius: 12px; letter-spacing: 1px; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 10px;">
-                    Explore Codex <i class="fa-solid fa-arrow-down" style="font-size: 0.9rem;"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Bottom Section Transition Wave Mask decoration styling shadow parameters -->
-        <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to top, var(--bg-primary), transparent); z-index: 5; pointer-events: none;"></div>
-    </header>
+<!-- HERO -->
+<section class="hero fade">
+<h1>Fusion SMP</h1>
+<p>Clean SMP • No Pay to Win</p>
+<button onclick="copyIP()">Copy IP</button>
+</section>
 
-    <!-- Embedded Scripts for Part 2 Functionalities Processing Layers -->
-    <script>
-        // Smooth Anchor Scrolling Processor 
-        function scrollToElement(id) {
-            const target = document.getElementById(id);
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
+<!-- ABOUT -->
+<section id="about" class="fade">
+<h2>About Server</h2>
+<p>We are a custom coded SMP with no pay-to-win. Just pure gameplay.</p>
+</section>
+
+<!-- RANKS -->
+<section id="ranks" class="fade">
+<h2>Discord Ranks</h2>
+
+<div class="rank-container">
+
+<div class="rank mvp">
+<h3>MVP</h3>
+<p>Testing features</p>
+<p>MVP channels</p>
+<button onclick="openPopup('MVP','Access to testing + channels')">Info</button>
+</div>
+
+<div class="rank mvpplus">
+<h3>MVP+</h3>
+<p>Everything in MVP</p>
+<p>Private calls</p>
+<button onclick="openPopup('MVP+','Includes calls + priority testing')">Info</button>
+</div>
+
+</div>
+
+</section>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+<h2 id="pop-title"></h2>
+<p id="pop-text"></p>
+<button onclick="closePopup()">Close</button>
+</div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast">Copied</div>
+
+<script>
+
+/* FADE */
+const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            e.target.classList.add("show");
         }
+    });
+});
 
-        // Premium Clipboard Engine Logic Tracker 
-        function copyNetworkIP(element) {
-            const tooltip = element.querySelector('.ip-tooltip-text');
-            const icon = element.querySelector('i');
-            
-            navigator.clipboard.writeText("fusionsmp.xyz").then(() => {
-                if(tooltip) {
-                    tooltip.innerText = "IP Copied Successfully!";
-                    tooltip.style.opacity = "1";
-                    element.style.borderColor = "var(--accent-cyan)";
-                    icon.className = "fa-solid fa-check";
-                    icon.style.color = "var(--accent-cyan)";
-                    
-                    setTimeout(() => {
-                        tooltip.style.opacity = "0";
-                        element.style.borderColor = "rgba(255, 105, 180, 0.4)";
-                        icon.className = "fa-regular fa-copy";
-                        icon.style.color = "var(--accent-pink)";
-                        setTimeout(() => { tooltip.innerText = "Click To Copy IP"; }, 300);
-                    }, 2000);
-                }
-            });
-        }
-    </script>
-    <!-- 3. PREMIUM INTERACTIVE FUSION CODEX GRID SECTION (CHUNK A) -->
-    <section class="section-padding" id="codex-anchor" style="position: relative; background: var(--bg-primary); z-index: 10;">
-        <div class="container-max">
-            
-            <!-- Section Header Backdrops Layout -->
-            <div class="heading-container">
-                <div class="bg-backdrop-text">Capabilities</div>
-                <h2>The Fusion <span>Codex</span></h2>
-                <p>Unlock or craft game-breaking tactical skillsets. Master your combinations to dominate every competitive encounter on the network.</p>
-            </div>
+document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
 
-            <!-- 8 Custom Fusion Agility Abilities Display Grid Matrix -->
-            <div class="codex-grid-matrix" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 2.5rem; margin-top: 2rem; width: 100%;">
-                
-                <!-- Ability 1: Speed Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #b0f5fc; opacity: 0.7; box-shadow: 0 0 15px #b0f5fc;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(176,245,252,0.06); border: 1px solid rgba(176,245,252,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #b0f5fc; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(176,245,252,0.15);">
-                        <i class="fa-solid fa-gauge-high"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #b0f5fc;">Speed Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Unleash maximum overdrive speed vectors across the terrain canvas. Overclock your core parameters to map spatial loops instantly.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #b0f5fc; margin-right: 8px;"></i> Permanent Speed III Attributes</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #b0f5fc; margin-right: 8px;"></i> Shift+Jump: Horizontal Air Dash</li>
-                    </ul>
-                </div>
+/* POPUP */
+function openPopup(title,text){
+    document.getElementById("pop-title").innerText = title;
+    document.getElementById("pop-text").innerText = text;
+    document.getElementById("popup").classList.add("active");
+}
 
-                <!-- Ability 2: Air Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #ffffff; opacity: 0.7; box-shadow: 0 0 15px #ffffff;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #ffffff; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(255,255,255,0.15);">
-                        <i class="fa-solid fa-wind"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #ffffff;">Air Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Defy standard gravity anchors and control the skies. Unleash compressed shockwave parameters onto unsuspecting grounded foes.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #ffffff; margin-right: 8px;"></i> Shift+Jump: 8-Block Sky Launch</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #ffffff; margin-right: 8px;"></i> Weapon Hits Trigger Wind Burst I</li>
-                    </ul>
-                </div>
+function closePopup(){
+    document.getElementById("popup").classList.remove("active");
+}
 
-                <!-- Ability 3: Volt Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #fbffaa; opacity: 0.7; box-shadow: 0 0 15px #fbffaa;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(251,255,170,0.06); border: 1px solid rgba(251,255,170,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #fbffaa; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(251,255,170,0.15);">
-                        <i class="fa-solid fa-bolt-lightning"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #fbffaa;">Volt Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Harness electrical currents to lock down tactical grid areas. Discharge static perimeter shock rings to stun enemy pathways.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #fbffaa; margin-right: 8px;"></i> Sprinting Fires Lightning Arcs</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #fbffaa; margin-right: 8px;"></i> Sneak: Emits Static Stun Circle</li>
-                    </ul>
-                </div>
+/* TOAST */
+function showToast(msg){
+    let t = document.getElementById("toast");
+    t.innerText = msg;
+    t.classList.add("show");
 
-                <!-- Ability 4: Bloodlust Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #fcaaf3; opacity: 0.7; box-shadow: 0 0 15px #fcaaf3;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(252,170,243,0.06); border: 1px solid rgba(252,170,243,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #fcaaf3; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(252,170,243,0.15);">
-                        <i class="fa-solid fa-droplet"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #fcaaf3;">Bloodlust Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Siphon enemy lifeforce directly into your health pool. Punish running opponents with high-impact bleeding loops on landing.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #fcaaf3; margin-right: 8px;"></i> Critical Strikes Deal 1.4x Damage</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #fcaaf3; margin-right: 8px;"></i> Critical Hits Restore +1.0 HP</li>
-                    </ul>
-                </div>
-                <!-- Ability 5: Dagger Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #a3a3a4; opacity: 0.7; box-shadow: 0 0 15px #a3a3a4;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(97,97,97,0.06); border: 1px solid rgba(97,97,97,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #a3a3a4; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(97,97,97,0.15);">
-                        <i class="fa-solid fa-play" style="transform: rotate(-45deg);"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #a3a3a4;">Dagger Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Execute precise, high-tier ambush protocols. Slip past baseline defensive barriers and shred critical enemy shield values instantly.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #a3a3a4; margin-right: 8px;"></i> Deals +5.0 Backstab Damage</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #a3a3a4; margin-right: 8px;"></i> Backstabs Grant Combat Speed Bursts</li>
-                    </ul>
-                </div>
+    setTimeout(()=>{
+        t.classList.remove("show");
+    },2000);
+}
 
-                <!-- Ability 6: Warden Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #61fbff; opacity: 0.7; box-shadow: 0 0 15px #61fbff;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(97,251,255,0.06); border: 1px solid rgba(97,251,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #61fbff; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(97,251,255,0.15);">
-                        <i class="fa-solid fa-eye-slash"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #61fbff;">Warden Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Channel deep dark energies to completely lock down visibility vectors. Fire targeted high-velocity ray bursts to blind opponents.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #61fbff; margin-right: 8px;"></i> Shift+Right-Click: Fires Sonic Boom</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #61fbff; margin-right: 8px;"></i> Hits Apply 8s Blind Darkness Loops</li>
-                    </ul>
-                </div>
+/* COPY IP */
+function copyIP(){
+    navigator.clipboard.writeText("fusionsmp.xyz");
+    showToast("IP Copied!");
+}
 
-                <!-- Ability 7: Warp Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #da8aff; opacity: 0.7; box-shadow: 0 0 15px #da8aff;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(218,138,255,0.06); border: 1px solid rgba(218,138,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #da8aff; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(218,138,255,0.15);">
-                        <i class="fa-solid fa-circle-nodes"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #da8aff;">Warp Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Blink across dimensional boundaries instantly. Shift positions to land fully automated, armor-shredding back-angle strikes.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #da8aff; margin-right: 8px;"></i> Sneak+Left-Click: Teleport Behind Enemy</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #da8aff; margin-right: 8px;"></i> Forces Critical Trajectory Damage</li>
-                    </ul>
-                </div>
-
-                <!-- Ability 8: Defense Fusion -->
-                <div class="codex-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
-                    <div class="card-glow-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #bcbcbc; opacity: 0.7; box-shadow: 0 0 15px #bcbcbc;"></div>
-                    <div class="card-icon-box" style="width: 65px; height: 65px; background: rgba(188,188,188,0.06); border: 1px solid rgba(188,188,188,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #bcbcbc; margin-bottom: 2rem; box-shadow: 0 0 20px rgba(188,188,188,0.15);">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #bcbcbc;">Defense Fusion</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">Become an immovable juggernaut. Absorb massive shock damage matrices and laugh off explosive anchoring attempts completely.</p>
-                    <ul style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 8px;">
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-square-plus" style="color: #bcbcbc; margin-right: 8px;"></i> Permanent Resistance II Attributes</li>
-                        <li style="font-size: 0.85rem; color: var(--text-main); font-weight: 600;"><i class="fa-solid fa-circle-play" style="color: #bcbcbc; margin-right: 8px;"></i> 100% Absolute Blast Damage Immunity</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Animation Hover Injectors Sheet -->
-    <style>
-        .codex-card {
-            transition: var(--transition-smooth) !important;
-        }
-        .codex-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(255, 105, 180, 0.25) !important;
-            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.08) !important;
-        }
-    </style>
-    <!-- 4. LIVE SERVER METRICS COUNTER BANNER -->
-    <section class="section-padding" id="stats-anchor" style="background: var(--bg-secondary); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); position: relative; z-index: 10;">
-        <div class="container-max">
-            <div class="heading-container" style="margin-bottom: 4rem;">
-                <div class="bg-backdrop-text">Data</div>
-                <h2>Network <span>Metrics</span></h2>
-                <p>Real-time analytics directly pulled from our server nodes. Experience flawless performance.</p>
-            </div>
-
-            <div class="metrics-grid" style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 3rem; text-align: center;">
-                <!-- Metric 1: Players -->
-                <div class="metric-item" style="flex: 1; min-width: 200px;">
-                    <i class="fa-solid fa-users" style="font-size: 2.5rem; color: var(--accent-pink); margin-bottom: 1rem; text-shadow: var(--glow-strength);"></i>
-                    <div style="font-family: 'Oswald', sans-serif; font-size: 3.5rem; font-weight: 700; color: #fff;">142<span style="color: var(--accent-cyan);">/500</span></div>
-                    <p style="color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-top: 0.5rem;">Active Players</p>
-                </div>
-                <!-- Metric 2: TPS -->
-                <div class="metric-item" style="flex: 1; min-width: 200px;">
-                    <i class="fa-solid fa-microchip" style="font-size: 2.5rem; color: var(--accent-cyan); margin-bottom: 1rem; text-shadow: 0 0 15px rgba(0,255,255,0.4);"></i>
-                    <div style="font-family: 'Oswald', sans-serif; font-size: 3.5rem; font-weight: 700; color: #fff;">20.0</div>
-                    <p style="color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-top: 0.5rem;">Server TPS Performance</p>
-                </div>
-                <!-- Metric 3: Ping -->
-                <div class="metric-item" style="flex: 1; min-width: 200px;">
-                    <i class="fa-solid fa-signal" style="font-size: 2.5rem; color: #fbffaa; margin-bottom: 1rem; text-shadow: 0 0 15px rgba(251,255,170,0.4);"></i>
-                    <div style="font-family: 'Oswald', sans-serif; font-size: 3.5rem; font-weight: 700; color: #fff;">9<span style="font-size: 1.5rem; color: var(--text-muted);">ms</span></div>
-                    <p style="color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-top: 0.5rem;">Average Latency</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 5. PREMIUM MULTI-TIER NETWORK STORE SECTION -->
-    <section class="section-padding" id="shop-anchor" style="background: var(--bg-primary); position: relative; z-index: 10;">
-        <div class="container-max">
-            <div class="heading-container">
-                <div class="bg-backdrop-text">Market</div>
-                <h2>Server <span>Store</span></h2>
-                <p>Support the network and unlock permanent custom benefits, premium agility styles, and tier ranks.</p>
-            </div>
-
-            <div class="shop-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; width: 100%;">
-                
-                <!-- Package 1: Elite Rank -->
-                <div class="shop-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.02); border-radius: 16px; padding: 3rem 2.5rem; text-align: center; position: relative; overflow: hidden; transition: var(--transition-smooth);">
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 2rem; text-transform: uppercase; color: #fff; letter-spacing: 1px; margin-bottom: 0.5rem;">ELITE RANK</h3>
-                    <div class="price-tag" style="margin-bottom: 2rem;"><span style="font-size: 1.5rem; color: var(--accent-pink); vertical-align: top; font-weight: 700;">$</span><span style="font-family: 'Oswald', sans-serif; font-size: 3.5rem; font-weight: 700; color: #fff;">9.99</span><span style="color: var(--text-muted); font-size: 0.9rem;">/one-time</span></div>
-                    <ul style="text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 3rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> Exclusive [Elite] Chat Tag</li>
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> Access to /feed Command (5m CD)</li>
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> +3 Extra Personal Player Homes</li>
-                    </ul>
-                    <a href="https://fusionsmp.xyz" target="_blank" class="shop-buy-btn" style="display: block; width: 100%; background: #252530; color: #fff; padding: 1rem; border-radius: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition-smooth);">Purchase Tier</a>
-                </div>
-
-                <!-- Package 2: Titan Rank (Featured/Best Value) -->
-                <div class="shop-card featured-tier" style="background: #15121b; border: 2px solid var(--accent-pink); border-radius: 16px; padding: 3.5rem 2.5rem 3rem 2.5rem; text-align: center; position: relative; overflow: hidden; transition: var(--transition-smooth); box-shadow: var(--glow-strength);">
-                    <div style="position: absolute; top: 20px; right: -35px; background: var(--accent-pink); color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 3rem; transform: rotate(45deg); letter-spacing: 1px; box-shadow: var(--glow-strength);">POPULAR</div>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 2.2rem; text-transform: uppercase; color: var(--accent-pink); letter-spacing: 1px; margin-bottom: 0.5rem; text-shadow: var(--glow-strength);">TITAN RANK</h3>
-                    <div class="price-tag" style="margin-bottom: 2rem;"><span style="font-size: 1.5rem; color: var(--accent-pink); vertical-align: top; font-weight: 700;">$</span><span style="font-family: 'Oswald', sans-serif; font-size: 3.8rem; font-weight: 700; color: #fff;">24.99</span><span style="color: var(--text-muted); font-size: 0.9rem;">/one-time</span></div>
-                    <ul style="text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 3rem; border-top: 1px solid rgba(255,255,256,0.05); padding-top: 2rem;">
-                        <li style="color: #fff; font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-star" style="color: var(--accent-pink); margin-right: 10px;"></i> Glow Profile Cosmetic Unlock</li>
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> Exclusive [Titan] Chat Tag</li>
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> Access to /fly Command in Hub</li>
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> Priority Slot Login Queue Access</li>
-                    </ul>
-                    <a href="https://fusionsmp.xyz" target="_blank" class="shop-buy-btn" style="display: block; width: 100%; background: var(--accent-pink); color: #fff; padding: 1rem; border-radius: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; box-shadow: var(--glow-strength); transition: var(--transition-smooth);">Purchase Tier</a>
-                </div>
-
-                <!-- Package 3: Ultimate Fusion Key Bundle -->
-                <div class="shop-card" style="background: var(--bg-secondary); border: 1px solid rgba(255,255,255,0.02); border-radius: 16px; padding: 3rem 2.5rem; text-align: center; position: relative; overflow: hidden; transition: var(--transition-smooth);">
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 2rem; text-transform: uppercase; color: #fff; letter-spacing: 1px; margin-bottom: 0.5rem;">CORE BUNDLE</h3>
-                    <div class="price-tag" style="margin-bottom: 2rem;"><span style="font-size: 1.5rem; color: var(--accent-pink); vertical-align: top; font-weight: 700;">$</span><span style="font-family: 'Oswald', sans-serif; font-size: 3.5rem; font-weight: 700; color: #fff;">14.99</span><span style="color: var(--text-muted); font-size: 0.9rem;">/one-time</span></div>
-                    <ul style="text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 3rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> 5x Mythic Fusion Assembly Keys</li>
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> 1x Random Epic Ability Core Drop</li>
-                        <li style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--accent-pink); margin-right: 10px;"></i> 2,500x Bonus Server Economy Claim</li>
-                    </ul>
-                    <a href="https://fusionsmp.xyz" target="_blank" class="shop-buy-btn" style="display: block; width: 100%; background: #252530; color: #fff; padding: 1rem; border-radius: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition-smooth);">Purchase Tier</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Animation Hover Injectors Sheet -->
-    <style>
-        .shop-card {
-            transition: var(--transition-smooth) !important;
-        }
-        .shop-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 105, 180, 0.3) !important;
-            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.05) !important;
-        }
-        .shop-card:hover .shop-buy-btn {
-            background: var(--accent-pink) !important;
-            box-shadow: var(--glow-strength) !important;
-        }
-        .featured-tier:hover {
-            box-shadow: 0 0 35px rgba(255, 105, 180, 0.6) !important;
-        }
-        .featured-tier .shop-buy-btn:hover {
-            background: var(--accent-pink-hover) !important;
-        }
-    </style>
-    <!-- 6. PREMIUM INTERACTIVE FAQ ACCORDION SECTION -->
-    <section class="section-padding" id="faq-anchor" style="background: var(--bg-secondary); border-top: 1px solid rgba(255,255,255,0.02); position: relative; z-index: 10;">
-        <div class="container-max" style="max-width: 900px;">
-            <div class="heading-container">
-                <div class="bg-backdrop-text">Support</div>
-                <h2>Frequently Asked <span>Questions</span></h2>
-                <p>Everything you need to know about the Fusion SMP network mechanics, ranks, and rules.</p>
-            </div>
-
-            <div class="faq-accordion-wrapper" style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
-                
-                <!-- FAQ Item 1 -->
-                <div class="faq-item" style="background: var(--bg-primary); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; overflow: hidden; transition: var(--transition-smooth);">
-                    <div class="faq-trigger" onclick="toggleFaqAccordion(this)" style="padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
-                        <h4 style="font-size: 1.1rem; font-weight: 700; color: #fff;">How do I acquire and craft Fusion Cores?</h4>
-                        <i class="fa-solid fa-chevron-down" style="color: var(--accent-pink); transition: var(--transition-smooth);"></i>
-                    </div>
-                    <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1); background: rgba(0,0,0,0.15);">
-                        <p style="padding: 0 2rem 1.5rem 2rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">You can craft base tier cores natively in the custom interface tables using materials found in-game, or purchase premium keys from our official store. Use the command <span style="color: var(--accent-cyan);">/fusions</span> in-game to view item formulas and indexing guides.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="faq-item" style="background: var(--bg-primary); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; overflow: hidden; transition: var(--transition-smooth);">
-                    <div class="faq-trigger" onclick="toggleFaqAccordion(this)" style="padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
-                        <h4 style="font-size: 1.1rem; font-weight: 700; color: #fff;">Do active fusions drop upon player elimination?</h4>
-                        <i class="fa-solid fa-chevron-down" style="color: var(--accent-pink); transition: var(--transition-smooth);"></i>
-                    </div>
-                    <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1); background: rgba(0,0,0,0.15);">
-                        <p style="padding: 0 2rem 1.5rem 2rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">Yes. Fusion SMP features a hardcore high-stakes competitive economy. When a player is eliminated, all active bound profile core modules will instantly safely decouple, drop into the world coordinates, and the victim's profile attributes will force-reset back to the baseline 20 HP defaults.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="faq-item" style="background: var(--bg-primary); border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; overflow: hidden; transition: var(--transition-smooth);">
-                    <div class="faq-trigger" onclick="toggleFaqAccordion(this)" style="padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
-                        <h4 style="font-size: 1.1rem; font-weight: 700; color: #fff;">How can I access the Admin Panel if authorized?</h4>
-                        <i class="fa-solid fa-chevron-down" style="color: var(--accent-pink); transition: var(--transition-smooth);"></i>
-                    </div>
-                    <div class="faq-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1); background: rgba(0,0,0,0.15);">
-                        <p style="padding: 0 2rem 1.5rem 2rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">Authorized system administrators or operators (OP) can fire up the master management node terminals using the utility command <span style="color: var(--accent-pink);">/fusionadmin</span> directly within the in-game chat interface to dispatch components or clear timers globally.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- 7. NETWORK FOOTER INFRASTRUCTURE -->
-    <footer style="background: var(--bg-primary); padding: 4rem 8% 3rem 8%; border-top: 1px solid rgba(255,255,255,0.02); position: relative; z-index: 10;">
-        <div class="container-max" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
-            
-            <div class="footer-branding">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 1px;">Fusion<span style="color: var(--accent-pink); text-shadow: var(--glow-strength);">SMP</span></div>
-                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; max-width: 320px;">Copyright &copy; 2026 Fusion SMP. All rights reserved. We are not affiliated with Mojang Studios or Microsoft.</p>
-            </div>
-
-            <div class="footer-socials" style="display: flex; gap: 1.5rem;">
-                <a href="https://discord.gg" target="_blank" style="width: 45px; height: 45px; background: var(--bg-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; transition: var(--transition-smooth); border: 1px solid rgba(255,255,255,0.02);"><i class="fa-brands fa-discord"></i></a>
-                <a href="https://youtube.com" target="_blank" style="width: 45px; height: 45px; background: var(--bg-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; transition: var(--transition-smooth); border: 1px solid rgba(255,255,255,0.02);"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://tiktok.com" target="_blank" style="width: 45px; height: 45px; background: var(--bg-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; transition: var(--transition-smooth); border: 1px solid rgba(255,255,255,0.02);"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-
-        </div>
-    </footer>
-
-    <!-- =========================================================
-         8. CORE WEB INTERACTION JAVASCRIPT ENGINES
-         ========================================================= -->
-    <script>
-        // Scroll Management Matrix Tracker
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('navbar-anchor');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Interactive Responsive Mobile Menu Toggle Layout
-        function toggleMobileMenu() {
-            const menu = document.getElementById('nav-menu');
-            const hamburger = document.getElementById('mobile-hamburger').querySelector('i');
-            
-            if (menu.style.display === 'flex' || menu.classList.contains('mobile-active')) {
-                menu.classList.remove('mobile-active');
-                hamburger.className = 'fa-solid fa-bars';
-            } else {
-                menu.classList.add('mobile-active');
-                hamburger.className = 'fa-solid fa-xmark';
-            }
-        }
-
-        // Accordion Animation Click Handler Loop Logic
-        function toggleFaqAccordion(element) {
-            const content = element.nextElementSibling;
-            const icon = element.querySelector('i');
-            const item = element.parentElement;
-            
-            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-                content.style.maxHeight = '0px';
-                icon.style.transform = 'rotate(0deg)';
-                item.style.borderColor = 'rgba(255,255,255,0.03)';
-            } else {
-                document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = '0px');
-                document.querySelectorAll('.faq-trigger i').forEach(el => el.style.transform = 'rotate(0deg)');
-                document.querySelectorAll('.faq-item').forEach(el => el.style.borderColor = 'rgba(255,255,255,0.03)');
-                
-                content.style.maxHeight = content.scrollHeight + 'px';
-                icon.style.transform = 'rotate(180deg)';
-                item.style.borderColor = 'rgba(255, 105, 180, 0.4)';
-            }
-        }
-    </script>
-
-    <!-- Extra Mobile Navigation Responsiveness Override Sheet Styles -->
-    <style>
-        @media (max-width: 991px) {
-            .nav-links-wrapper {
-                display: none !important;
-                flex-direction: column;
-                position: absolute;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background: var(--bg-primary);
-                padding: 2rem;
-                border-bottom: 2px solid var(--accent-pink);
-                gap: 1.5rem;
-            }
-            .nav-links-wrapper.mobile-active {
-                display: flex !important;
-            }
-            .mobile-nav-toggle {
-                display: block !important;
-            }
-            .nav-actions-container {
-                display: none !important;
-            }
-            .hero-main-title {
-                font-size: 3.5rem !important;
-            }
-            .heading-container .bg-backdrop-text {
-                font-size: 4rem !important;
-            }
-        }
-    </style>
+</script>
 
 </body>
 </html>
