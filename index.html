@@ -5,182 +5,218 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fusion SMP</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =========================
+   GLOBAL RESET
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: #0e0e0e;
-    color: white;
-    overflow-x: hidden;
+body{
+    font-family:'Inter',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* GLOBAL */
-section {
-    padding: 80px 20px;
-    text-align: center;
+/* =========================
+   BACKGROUND GLOW
+========================= */
+body::before{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#ff2da6,transparent);
+    top:-200px;
+    left:-200px;
+    filter:blur(120px);
+    opacity:.25;
+    animation:moveGlow 10s infinite alternate;
 }
 
-h1,h2,h3 {
-    margin-bottom: 15px;
+@keyframes moveGlow{
+    0%{transform:translate(0,0)}
+    100%{transform:translate(200px,200px)}
 }
 
-button {
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 20px;
-    transition: 0.25s ease;
+/* =========================
+   NAVBAR
+========================= */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    z-index:1000;
 }
 
-button:hover {
-    transform: translateY(-3px);
+nav h1{
+    font-weight:800;
+    color:#ff2da6;
 }
 
-button:active {
-    transform: scale(0.95);
+nav a{
+    margin-left:25px;
+    text-decoration:none;
+    color:#ccc;
+    transition:.2s;
 }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg,#1a1a1a,#000);
+nav a:hover{
+    color:white;
 }
 
-.hero h1 {
-    font-size: 3rem;
+/* =========================
+   HERO
+========================= */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-.hero button {
-    margin-top: 20px;
-    background: #ff4da6;
-    color: white;
+.hero h2{
+    font-size:4rem;
+    font-weight:800;
 }
 
-/* FADE IN */
-.fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.8s ease;
+.hero span{
+    color:#ff2da6;
 }
 
-.fade.show {
-    opacity: 1;
-    transform: translateY(0);
+.hero p{
+    margin-top:15px;
+    color:#aaa;
 }
 
-/* RANKS */
-.rank-container {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
+.btn{
+    margin-top:30px;
+    padding:12px 28px;
+    background:linear-gradient(90deg,#ff2da6,#a64dff);
+    border:none;
+    border-radius:6px;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.rank {
-    padding: 25px;
-    width: 260px;
-    border-radius: 12px;
-    transition: 0.3s;
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 15px #ff2da6;
 }
 
-.rank:hover {
-    transform: translateY(-8px);
+/* =========================
+   SECTION
+========================= */
+.section{
+    padding:100px 40px;
+    text-align:center;
 }
 
-.mvp {
-    border: 2px solid #ffd84d;
-    box-shadow: 0 0 20px rgba(255,216,77,0.3);
+.section h3{
+    font-size:2.2rem;
+    margin-bottom:15px;
 }
 
-.mvp h3 {
-    color: #ffd84d;
+.section p{
+    color:#aaa;
 }
 
-.mvpplus {
-    border: 2px solid #ff8c42;
-    box-shadow: 0 0 20px rgba(255,140,66,0.3);
+/* =========================
+   GRID
+========================= */
+.grid{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-top:40px;
 }
 
-.mvpplus h3 {
-    color: #ff8c42;
+/* =========================
+   CARD
+========================= */
+.card{
+    width:280px;
+    padding:30px;
+    border-radius:10px;
+    background:#0d0d0d;
+    border:1px solid #222;
+    transition:.25s;
 }
 
-/* POPUP */
-.popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.3s;
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#ff2da6;
 }
 
-.popup.active {
-    opacity: 1;
-    pointer-events: all;
+/* =========================
+   FUSIONS
+========================= */
+.fusion{
+    border:1px solid #ff2da6;
 }
 
-.popup-box {
-    background: #1c1c1c;
-    padding: 30px;
-    border-radius: 12px;
-    width: 300px;
-    transform: scale(0.8);
-    transition: 0.3s;
+.fusion h4{
+    color:#ff2da6;
 }
 
-.popup.active .popup-box {
-    transform: scale(1);
+/* =========================
+   RANKS
+========================= */
+.mvp{
+    border:1px solid #ffd84d;
 }
 
-/* TOAST */
-.toast {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #ff4da6;
-    padding: 12px 20px;
-    border-radius: 8px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.3s;
+.mvp h4{
+    color:#ffd84d;
 }
 
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
+.mvpplus{
+    border:1px solid #ff8c42;
 }
 
-/* NAV */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 15px;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(10px);
+.mvpplus h4{
+    color:#ff8c42;
 }
 
-nav a {
-    margin: 0 15px;
-    color: white;
-    text-decoration: none;
+/* =========================
+   FOOTER
+========================= */
+footer{
+    padding:40px;
+    text-align:center;
+    color:#777;
+}
+
+/* =========================
+   FADE IN
+========================= */
+.fade{
+    opacity:0;
+    transform:translateY(30px);
+    transition:.8s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 </style>
@@ -189,99 +225,90 @@ nav a {
 <body>
 
 <nav>
+<h1>Fusion SMP</h1>
+<div>
 <a href="#">Home</a>
-<a href="#ranks">Ranks</a>
 <a href="#about">About</a>
+<a href="#fusions">Fusions</a>
+<a href="#ranks">Ranks</a>
+</div>
 </nav>
 
-<!-- HERO -->
 <section class="hero fade">
-<h1>Fusion SMP</h1>
-<p>Clean SMP • No Pay to Win</p>
-<button onclick="copyIP()">Copy IP</button>
+<h2>Fusion <span>SMP</span></h2>
+<p>Custom Plugin • No Pay To Win • Pure Gameplay</p>
+<button class="btn" onclick="copyIP()">Copy IP</button>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="fade">
-<h2>About Server</h2>
-<p>We are a custom coded SMP with no pay-to-win. Just pure gameplay.</p>
+<section id="about" class="section fade">
+<h3>About Server</h3>
+<p>Fusion SMP is built on a fully custom plugin, bringing unique mechanics and systems you won't find anywhere else.</p>
 </section>
 
-<!-- RANKS -->
-<section id="ranks" class="fade">
-<h2>Discord Ranks</h2>
+<section id="fusions" class="section fade">
+<h3>Fusions</h3>
+<p>Combine abilities and unlock powerful gameplay styles.</p>
 
-<div class="rank-container">
+<div class="grid">
 
-<div class="rank mvp">
-<h3>MVP</h3>
+<div class="card fusion">
+<h4>Fire Fusion</h4>
+<p>Burn enemies and gain strength boosts.</p>
+</div>
+
+<div class="card fusion">
+<h4>Shadow Fusion</h4>
+<p>Stealth abilities and speed boosts.</p>
+</div>
+
+<div class="card fusion">
+<h4>Storm Fusion</h4>
+<p>Lightning attacks and mobility.</p>
+</div>
+
+</div>
+</section>
+
+<section id="ranks" class="section fade">
+<h3>Discord Ranks</h3>
+
+<div class="grid">
+
+<div class="card mvp">
+<h4>MVP</h4>
 <p>Testing features</p>
 <p>MVP channels</p>
-<button onclick="openPopup('MVP','Access to testing + channels')">Info</button>
 </div>
 
-<div class="rank mvpplus">
-<h3>MVP+</h3>
+<div class="card mvpplus">
+<h4>MVP+</h4>
 <p>Everything in MVP</p>
 <p>Private calls</p>
-<button onclick="openPopup('MVP+','Includes calls + priority testing')">Info</button>
 </div>
 
 </div>
 
 </section>
 
-<!-- POPUP -->
-<div id="popup" class="popup">
-<div class="popup-box">
-<h2 id="pop-title"></h2>
-<p id="pop-text"></p>
-<button onclick="closePopup()">Close</button>
-</div>
-</div>
-
-<!-- TOAST -->
-<div id="toast" class="toast">Copied</div>
+<footer>
+Fusion SMP © 2026
+</footer>
 
 <script>
 
-/* FADE */
 const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-        if(e.isIntersecting){
-            e.target.classList.add("show");
-        }
-    });
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add("show");
+}
+});
 });
 
 document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
 
-/* POPUP */
-function openPopup(title,text){
-    document.getElementById("pop-title").innerText = title;
-    document.getElementById("pop-text").innerText = text;
-    document.getElementById("popup").classList.add("active");
-}
-
-function closePopup(){
-    document.getElementById("popup").classList.remove("active");
-}
-
-/* TOAST */
-function showToast(msg){
-    let t = document.getElementById("toast");
-    t.innerText = msg;
-    t.classList.add("show");
-
-    setTimeout(()=>{
-        t.classList.remove("show");
-    },2000);
-}
-
-/* COPY IP */
 function copyIP(){
-    navigator.clipboard.writeText("fusionsmp.xyz");
-    showToast("IP Copied!");
+navigator.clipboard.writeText("fusionsmp.xyz");
+alert("Copied IP");
 }
 
 </script>
