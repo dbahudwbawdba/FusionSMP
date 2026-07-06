@@ -10,17 +10,13 @@
 <style>
 
 /* RESET */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:'Inter',sans-serif;
 background:#05010a;
 color:white;
-overflow:hidden;
+overflow-x:hidden;
 }
 
 /* CANVAS BG */
@@ -33,15 +29,18 @@ height:100%;
 z-index:-1;
 }
 
-/* NAV */
+/* NAVBAR */
 nav{
-position:absolute;
-top:20px;
+position:fixed;
+top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
-padding:0 40px;
 align-items:center;
+padding:20px 40px;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
+z-index:1000;
 }
 
 nav h1{
@@ -51,17 +50,16 @@ background:linear-gradient(90deg,#c084fc,#ff4df0);
 -webkit-text-fill-color:transparent;
 }
 
-nav .btn{
-background:linear-gradient(90deg,#a855f7,#ec4899);
-padding:10px 20px;
-border-radius:8px;
-cursor:pointer;
+nav .links a{
+margin-left:25px;
+text-decoration:none;
+color:#ccc;
 transition:.2s;
+cursor:pointer;
 }
 
-nav .btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px #c084fc;
+nav .links a:hover{
+color:white;
 }
 
 /* HERO */
@@ -112,6 +110,114 @@ transform:translateY(-4px);
 box-shadow:0 0 25px #a855f7;
 }
 
+/* SECTIONS */
+.section{
+padding:100px 40px;
+text-align:center;
+}
+
+.section h3{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+/* TEAM BUTTON */
+.team-btn{
+margin-top:20px;
+padding:12px 25px;
+border:1px solid #ff4df0;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:2000;
+}
+
+.popup.active{
+opacity:1;
+pointer-events:all;
+}
+
+.popup-box{
+background:#0d0d15;
+padding:30px;
+border-radius:12px;
+width:350px;
+text-align:center;
+transform:scale(.8);
+transition:.3s;
+}
+
+.popup.active .popup-box{
+transform:scale(1);
+}
+
+/* PLAYER CARD */
+.player{
+margin-top:20px;
+padding:20px;
+border-radius:10px;
+background:#111;
+border:1px solid #ff4df0;
+}
+
+.player img{
+width:80px;
+border-radius:8px;
+}
+
+.player h4{
+margin-top:10px;
+color:#ff9afc;
+}
+
+/* FAQ */
+.faq{
+max-width:600px;
+margin:auto;
+text-align:left;
+}
+
+.faq-item{
+margin-bottom:15px;
+padding:15px;
+background:#111;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* DISCORD */
+.discord-btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 30px;
+background:#5865F2;
+border-radius:8px;
+text-decoration:none;
+color:white;
+}
+
+/* FOOTER */
+footer{
+padding:40px;
+text-align:center;
+color:#777;
+}
+
 </style>
 </head>
 
@@ -121,31 +227,94 @@ box-shadow:0 0 25px #a855f7;
 
 <nav>
 <h1>Fusion SMP</h1>
-<div class="btn" onclick="copyIP()">PLAY NOW</div>
+<div class="links">
+<a onclick="scrollToSection('home')">Home</a>
+<a onclick="scrollToSection('team')">Team</a>
+<a onclick="scrollToSection('faq')">FAQ</a>
+<a onclick="scrollToSection('discord')">Discord</a>
+</div>
 </nav>
 
-<div class="hero">
+<!-- HERO -->
+<section id="home" class="hero">
 <div class="tag">RELEASE</div>
 <h2>FUSION SMP</h2>
 <p>Custom Plugin • Fusions • No Pay-To-Win</p>
 <div class="main-btn" onclick="copyIP()">PLAY.FUSIONSMP.XYZ</div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="section">
+<h3>Our Team</h3>
+<p>Meet the people behind Fusion SMP</p>
+<div class="team-btn" onclick="openPopup()">View Team</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+<h3>FAQ</h3>
+<div class="faq">
+<div class="faq-item">No Pay-to-Win — everything is fair.</div>
+<div class="faq-item">Custom plugin with unique Fusion system.</div>
 </div>
+</section>
+
+<!-- DISCORD -->
+<section id="discord" class="section">
+<h3>Join Our Discord</h3>
+<a class="discord-btn" href="#">Join Discord</a>
+</section>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+<h3>Team</h3>
+
+<div class="player">
+<img src="https://mc-heads.net/head/Shaykuhh" />
+<h4>Shaykuhh</h4>
+<p style="color:#ff9afc;">Owner</p>
+</div>
+
+<br>
+<button onclick="closePopup()">Close</button>
+
+</div>
+</div>
+
+<footer>
+Fusion SMP © 2026
+</footer>
 
 <script>
 
-/* COPY IP */
+/* SCROLL */
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+/* POPUP */
+function openPopup(){
+document.getElementById("popup").classList.add("active");
+}
+
+function closePopup(){
+document.getElementById("popup").classList.remove("active");
+}
+
+/* COPY */
 function copyIP(){
 navigator.clipboard.writeText("play.fusionsmp.xyz");
 }
 
-/* PARTICLE SYSTEM */
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+/* PARTICLES */
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-let particles = [];
+let particles=[];
 
 for(let i=0;i<120;i++){
 particles.push({
@@ -169,8 +338,8 @@ ctx.fill();
 p.x+=p.vx;
 p.y+=p.vy;
 
-if(p.x<0||p.x>canvas.width) p.vx*=-1;
-if(p.y<0||p.y>canvas.height) p.vy*=-1;
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
 });
 
 requestAnimationFrame(draw);
@@ -178,7 +347,6 @@ requestAnimationFrame(draw);
 
 draw();
 
-/* RESIZE */
 window.addEventListener("resize",()=>{
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
