@@ -5,218 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fusion SMP</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   GLOBAL RESET
-========================= */
+/* RESET */
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:'Inter',sans-serif;
-    background:#050505;
-    color:white;
-    overflow-x:hidden;
+font-family:'Inter',sans-serif;
+background:#05010a;
+color:white;
+overflow:hidden;
 }
 
-/* =========================
-   BACKGROUND GLOW
-========================= */
-body::before{
-    content:'';
-    position:fixed;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,#ff2da6,transparent);
-    top:-200px;
-    left:-200px;
-    filter:blur(120px);
-    opacity:.25;
-    animation:moveGlow 10s infinite alternate;
+/* CANVAS BG */
+#bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
 }
 
-@keyframes moveGlow{
-    0%{transform:translate(0,0)}
-    100%{transform:translate(200px,200px)}
-}
-
-/* =========================
-   NAVBAR
-========================= */
+/* NAV */
 nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:20px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(0,0,0,0.4);
-    backdrop-filter:blur(10px);
-    z-index:1000;
+position:absolute;
+top:20px;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:0 40px;
+align-items:center;
 }
 
 nav h1{
-    font-weight:800;
-    color:#ff2da6;
+font-weight:800;
+background:linear-gradient(90deg,#c084fc,#ff4df0);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-nav a{
-    margin-left:25px;
-    text-decoration:none;
-    color:#ccc;
-    transition:.2s;
+nav .btn{
+background:linear-gradient(90deg,#a855f7,#ec4899);
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+transition:.2s;
 }
 
-nav a:hover{
-    color:white;
+nav .btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #c084fc;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 .hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.tag{
+margin-bottom:20px;
+padding:6px 14px;
+border:1px solid #a855f7;
+border-radius:999px;
+font-size:12px;
+letter-spacing:2px;
+color:#c084fc;
 }
 
 .hero h2{
-    font-size:4rem;
-    font-weight:800;
-}
-
-.hero span{
-    color:#ff2da6;
+font-size:4.5rem;
+font-weight:800;
+background:linear-gradient(#fff,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
-    margin-top:15px;
-    color:#aaa;
+margin-top:15px;
+color:#bbb;
 }
 
-.btn{
-    margin-top:30px;
-    padding:12px 28px;
-    background:linear-gradient(90deg,#ff2da6,#a64dff);
-    border:none;
-    border-radius:6px;
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-    transition:.2s;
+.main-btn{
+margin-top:30px;
+padding:14px 40px;
+background:linear-gradient(90deg,#a855f7,#ec4899);
+border-radius:10px;
+font-weight:600;
+cursor:pointer;
+transition:.25s;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 15px #ff2da6;
-}
-
-/* =========================
-   SECTION
-========================= */
-.section{
-    padding:100px 40px;
-    text-align:center;
-}
-
-.section h3{
-    font-size:2.2rem;
-    margin-bottom:15px;
-}
-
-.section p{
-    color:#aaa;
-}
-
-/* =========================
-   GRID
-========================= */
-.grid{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
-    margin-top:40px;
-}
-
-/* =========================
-   CARD
-========================= */
-.card{
-    width:280px;
-    padding:30px;
-    border-radius:10px;
-    background:#0d0d0d;
-    border:1px solid #222;
-    transition:.25s;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-    border-color:#ff2da6;
-}
-
-/* =========================
-   FUSIONS
-========================= */
-.fusion{
-    border:1px solid #ff2da6;
-}
-
-.fusion h4{
-    color:#ff2da6;
-}
-
-/* =========================
-   RANKS
-========================= */
-.mvp{
-    border:1px solid #ffd84d;
-}
-
-.mvp h4{
-    color:#ffd84d;
-}
-
-.mvpplus{
-    border:1px solid #ff8c42;
-}
-
-.mvpplus h4{
-    color:#ff8c42;
-}
-
-/* =========================
-   FOOTER
-========================= */
-footer{
-    padding:40px;
-    text-align:center;
-    color:#777;
-}
-
-/* =========================
-   FADE IN
-========================= */
-.fade{
-    opacity:0;
-    transform:translateY(30px);
-    transition:.8s;
-}
-
-.fade.show{
-    opacity:1;
-    transform:translateY(0);
+.main-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 25px #a855f7;
 }
 
 </style>
@@ -224,92 +117,72 @@ footer{
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <nav>
 <h1>Fusion SMP</h1>
-<div>
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="#fusions">Fusions</a>
-<a href="#ranks">Ranks</a>
-</div>
+<div class="btn" onclick="copyIP()">PLAY NOW</div>
 </nav>
 
-<section class="hero fade">
-<h2>Fusion <span>SMP</span></h2>
-<p>Custom Plugin • No Pay To Win • Pure Gameplay</p>
-<button class="btn" onclick="copyIP()">Copy IP</button>
-</section>
-
-<section id="about" class="section fade">
-<h3>About Server</h3>
-<p>Fusion SMP is built on a fully custom plugin, bringing unique mechanics and systems you won't find anywhere else.</p>
-</section>
-
-<section id="fusions" class="section fade">
-<h3>Fusions</h3>
-<p>Combine abilities and unlock powerful gameplay styles.</p>
-
-<div class="grid">
-
-<div class="card fusion">
-<h4>Fire Fusion</h4>
-<p>Burn enemies and gain strength boosts.</p>
+<div class="hero">
+<div class="tag">RELEASE</div>
+<h2>FUSION SMP</h2>
+<p>Custom Plugin • Fusions • No Pay-To-Win</p>
+<div class="main-btn" onclick="copyIP()">PLAY.FUSIONSMP.XYZ</div>
 </div>
-
-<div class="card fusion">
-<h4>Shadow Fusion</h4>
-<p>Stealth abilities and speed boosts.</p>
-</div>
-
-<div class="card fusion">
-<h4>Storm Fusion</h4>
-<p>Lightning attacks and mobility.</p>
-</div>
-
-</div>
-</section>
-
-<section id="ranks" class="section fade">
-<h3>Discord Ranks</h3>
-
-<div class="grid">
-
-<div class="card mvp">
-<h4>MVP</h4>
-<p>Testing features</p>
-<p>MVP channels</p>
-</div>
-
-<div class="card mvpplus">
-<h4>MVP+</h4>
-<p>Everything in MVP</p>
-<p>Private calls</p>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-Fusion SMP © 2026
-</footer>
 
 <script>
 
-const obs = new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add("show");
-}
-});
-});
-
-document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
-
+/* COPY IP */
 function copyIP(){
-navigator.clipboard.writeText("fusionsmp.xyz");
-alert("Copied IP");
+navigator.clipboard.writeText("play.fusionsmp.xyz");
 }
+
+/* PARTICLE SYSTEM */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<120;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5,
+vx:(Math.random()-0.5)*0.3,
+vy:(Math.random()-0.5)*0.3
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width) p.vx*=-1;
+if(p.y<0||p.y>canvas.height) p.vy*=-1;
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
+
+/* RESIZE */
+window.addEventListener("resize",()=>{
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+});
 
 </script>
 
